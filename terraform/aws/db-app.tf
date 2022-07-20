@@ -10,8 +10,8 @@ resource "aws_db_instance" "default" {
   engine_version          = "8.0" # Latest major version 
   instance_class          = "db.t3.micro"
   allocated_storage       = "20"
-  master_username         = "admin"
-  master_password         = var.password
+  username                = "admin"
+  password                = var.password
   apply_immediately       = true
   multi_az                = false
   backup_retention_period = 0
