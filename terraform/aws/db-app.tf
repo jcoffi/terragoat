@@ -42,7 +42,7 @@ resource "aws_db_instance" "default" {
 
 resource "aws_db_option_group" "default" {
   engine_name              = "mysql"
-  name                     = "og-${local.resource_prefix.value}"
+  name                     = og-${local.resource_prefix.value}
   major_engine_version     = "8.0"
   option_group_description = "Terraform OG"
 
@@ -62,7 +62,7 @@ resource "aws_db_option_group" "default" {
 }
 
 resource "aws_db_parameter_group" "default" {
-  name        = "pg-${local.resource_prefix.value}"
+  name        = pg-${local.resource_prefix.value}
   family      = "mysql8.0"
   description = "Terraform PG"
 
@@ -94,12 +94,12 @@ resource "aws_db_parameter_group" "default" {
 }
 
 resource "aws_db_subnet_group" "default" {
-  name        = "sg-${local.resource_prefix.value}"
+  name        = sg-${local.resource_prefix.value}
   subnet_ids  = ["${aws_subnet.web_subnet.id}", "${aws_subnet.web_subnet2.id}"]
   description = "Terraform DB Subnet Group"
 
   tags = merge({
-    Name        = "sg-${local.resource_prefix.value}"
+    Name        = sg-${local.resource_prefix.value}
     Environment = local.resource_prefix.value
     }, {
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
@@ -118,7 +118,7 @@ resource "aws_security_group" "default" {
   vpc_id = aws_vpc.web_vpc.id
 
   tags = merge({
-    Name        = "${local.resource_prefix.value}-rds-sg"
+    Name        = ${local.resource_prefix.value}-rds-sg
     Environment = local.resource_prefix.value
     }, {
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
