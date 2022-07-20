@@ -26,18 +26,18 @@ variable "region" {
 }
 
 variable ami {
-  type    = "string"
+  type    = string
   default = "ami-09a5b0b7edf08843d"
 }
 
 variable "dbname" {
-  type        = "string"
+  type        = string
   description = "Name of the Database"
   default     = "db1"
 }
 
 variable "password" {
-  type        = "string"
+  type        = string
   description = "Database password"
   default     = "Aa1234321Bb"
 }
