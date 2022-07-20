@@ -7,7 +7,7 @@ resource "aws_neptune_cluster" "default" {
   iam_database_authentication_enabled = false
   apply_immediately                   = true
   storage_encrypted                   = false
-  neptune_subnet_group_name           = "${aws_subnet.web_subnet.id}"
+  neptune_subnet_group_name           = "${aws_db_subnet_group.default.name}"
   tags = {
     git_commit           = "aa8fd16fd94cccf6af206e2f0922b5558f8ac514"
     git_file             = "terraform/aws/neptune.tf"
