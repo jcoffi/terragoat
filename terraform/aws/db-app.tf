@@ -1,5 +1,5 @@
 resource "aws_db_instance" "default" {
-  name                   = var.dbname
+  db_name                = var.dbname
   engine                 = "mysql"
   option_group_name      = aws_db_option_group.default.name
   parameter_group_name   = aws_db_parameter_group.default.name
@@ -36,7 +36,7 @@ resource "aws_db_instance" "default" {
 
   # Ignore password changes from tf plan diff
   lifecycle {
-    ignore_changes = ["password"]
+    ignore_changes = [password]
   }
 }
 
@@ -245,8 +245,7 @@ resource "aws_instance" "db_app" {
   instance_type        = "t2.nano"
   iam_instance_profile = aws_iam_instance_profile.ec2profile.name
 
-  vpc_security_group_ids = [
-  "${aws_security_group.web-node.id}"]
+  vpc_security_group_ids = ["${aws_security_group.web-node.id}"]
   subnet_id = "${aws_subnet.web_subnet.id}"
   user_data = <<EOF
 #! /bin/bash
