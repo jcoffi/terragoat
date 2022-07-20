@@ -4,7 +4,7 @@ resource "aws_s3_bucket" "data" {
   # bucket does not have access logs
   # bucket does not have versioning
   bucket        = "${local.resource_prefix.value}-data"
-  aws_s3_bucket_acl           = "public-read"
+  acl           = "public-read"
   force_destroy = true
   tags = merge({
     Name        = "${local.resource_prefix.value}-data"
@@ -67,7 +67,7 @@ resource "aws_s3_bucket" "operations" {
   # bucket is not encrypted
   # bucket does not have access logs
   bucket = "${local.resource_prefix.value}-operations"
-  aws_s3_bucket_acl    = "private"
+  acl    = "private"
   versioning {
     enabled = true
   }
@@ -114,7 +114,7 @@ resource "aws_s3_bucket" "data_science" {
 
 resource "aws_s3_bucket" "logs" {
   bucket = "${local.resource_prefix.value}-logs"
-  aws_s3_bucket_acl    = "log-delivery-write"
+  acl    = "log-delivery-write"
   versioning {
     enabled = true
   }
