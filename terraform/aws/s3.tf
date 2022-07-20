@@ -91,7 +91,7 @@ resource "aws_s3_bucket" "operations" {
 resource "aws_s3_bucket" "data_science" {
   # bucket is not encrypted
   bucket = "${local.resource_prefix.value}-data-science"
-  aws_s3_bucket_acl    = "private"
+  acl    = "private"
   versioning {
     enabled = true
   }
