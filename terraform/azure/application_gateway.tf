@@ -22,16 +22,16 @@ resource "azurerm_application_gateway" "network" {
 
 
   frontend_ip_configuration {
-    name                 = "name"
+    name                 = "${local.resource_prefix.value}-name"
     public_ip_address_id = "Ip-address"
   }
 
   backend_address_pool {
-    name = local.backend_address_pool_name
+    name = "${local.resource_prefix.value}-address-pool"
   }
 
   backend_http_settings {
-    name                  = local.http_settings_name
+    name                  = "${local.resource_prefix.value}-http-settings"
     cookie_based_affinity = "Disabled"
     path                  = "/path1/"
     port                  = 80
@@ -40,14 +40,14 @@ resource "azurerm_application_gateway" "network" {
   }
 
   http_listener {
-    name                           = local.listener_name
+    name                           = "${local.resource_prefix.value}.listener_name"
     frontend_ip_configuration_name = local.frontend_ip_configuration_name
     frontend_port_name             = local.frontend_port_name
     protocol                       = "Http"
   }
 
   request_routing_rule {
-    name                       = local.request_routing_rule_name
+    name                       = "${local.resource_prefix.value}.request_routing_rule_name"
     rule_type                  = "Basic"
     http_listener_name         = local.listener_name
     backend_address_pool_name  = local.backend_address_pool_name
