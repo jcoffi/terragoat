@@ -40,9 +40,9 @@ resource "azurerm_application_gateway" "network" {
   }
 
   http_listener {
-    name                           = "${local.resource_prefix.value}.listener_name"
-    frontend_ip_configuration_name = "${local.frontend_ip_configuration.value.name}"
-    frontend_port_name             = "${local.frontend_port_name}"
+    name                           = "${local.resource_prefix.value}-listener_name"
+    frontend_ip_configuration_name = "${local.resource_prefix.value}.frontend_ip_configuration_name"
+    frontend_port_name             = "${local.resource_prefix.value}.frontend_port_name}"
     protocol                       = "Http"
   }
 
