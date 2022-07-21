@@ -41,17 +41,17 @@ resource "azurerm_application_gateway" "network" {
 
   http_listener {
     name                           = "${local.resource_prefix.value}.listener_name"
-    frontend_ip_configuration_name = local.frontend_ip_configuration.name
-    frontend_port_name             = local.frontend_port_name
+    frontend_ip_configuration_name = "${local.frontend_ip_configuration.name}"
+    frontend_port_name             = "${local.frontend_port_name}"
     protocol                       = "Http"
   }
 
   request_routing_rule {
     name                       = "${local.resource_prefix.value}.request_routing_rule_name"
     rule_type                  = "Basic"
-    http_listener_name         = local.listener_name
-    backend_address_pool_name  = local.backend_address_pool_name
-    backend_http_settings_name = local.http_setting_name
+    http_listener_name         = "${local.listener_name}"
+    backend_address_pool_name  = "${local.backend_address_pool_name}"
+    backend_http_settings_name = "${local.http_setting_name}"
   }
   tags = {
     git_commit           = "b07a42ebd74b8f0ba647e20b872474b1c29b4814"
